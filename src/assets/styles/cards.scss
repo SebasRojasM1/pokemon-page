@@ -1,0 +1,41 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.cards-container{
+    @include flex-center;
+    flex-wrap: wrap;
+
+    .card{
+        width: 270px;
+        height: 320px;
+        margin: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: $card-box-shadow;
+        border-radius: $card-border-radius;
+        transition: transform 0.3s ease;
+
+        .image-pokemon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background-color: aqua;
+            width: 70%;
+            border-radius: 50%;
+            margin: auto;
+
+            img{
+                width: 600px;
+            }
+        }
+
+        .info-pokemon{
+
+        }
+
+        .more-details{
+
+        }
+    }
+}
