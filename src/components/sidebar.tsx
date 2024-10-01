@@ -9,13 +9,14 @@ interface PokemonType {
 }
 
 interface SidebarProps {
-  onFilterChange: (selectedTypes: string[]) => void;
+  onFilterChange: (selectedTypes: string[], searchTerm: string) => void;
 }
 
 function Sidebar({ onFilterChange }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [types, setTypes] = useState<PokemonType[]>([]);
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
+  const [searchTerm, setSearchTerm] = useState<string>(''); // Nuevo estado para el nombre de búsqueda
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -34,14 +35,19 @@ function Sidebar({ onFilterChange }: SidebarProps) {
     fetchTypes();
   }, []);
 
-
+  
   const handleTypeChange = (type: string) => {
     const updatedSelectedTypes = selectedTypes.includes(type)
       ? selectedTypes.filter((t) => t !== type)
       : [...selectedTypes, type];
 
     setSelectedTypes(updatedSelectedTypes);
-    onFilterChange(updatedSelectedTypes); // Pass the selected types to the parent component
+    onFilterChange(updatedSelectedTypes, searchTerm); // Pass the selected types and search term
+  };
+
+  const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+    onFilterChange(selectedTypes, event.target.value); // Pass the updated search term and selected types
   };
 
   return (
@@ -61,7 +67,13 @@ function Sidebar({ onFilterChange }: SidebarProps) {
         <div className='search-container'>
           <p>Busqueda avanzada:</p>
           <label htmlFor="">Buscar por nombre pokemon</label>
-          <input type="search" name="" id="" />
+          <input
+            type="search"
+            name="search"
+            id="search"
+            value={searchTerm}
+            onChange={handleSearchChange} // Añadimos el evento para actualizar el valor de búsqueda
+          />
         </div>
 
         <div className='filter-container'>

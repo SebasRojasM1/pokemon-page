@@ -17,9 +17,10 @@ interface Pokemon {
 
 interface CardsPokemonProps {
   selectedTypes: string[];
+  searchTerm: string;
 }
 
-function CardsPokemon({ selectedTypes }: CardsPokemonProps) {
+function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
   useEffect(() => {
@@ -40,6 +41,7 @@ function CardsPokemon({ selectedTypes }: CardsPokemonProps) {
     fetchPokemonData();
   }, []);
 
+  /*Funcion donde se setea los colores de los pokemones según su tipo, en base a la variable creada en SASS.*/
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'grass':
@@ -79,18 +81,23 @@ function CardsPokemon({ selectedTypes }: CardsPokemonProps) {
       case 'normal':
         return 'normal-pokemon-color';
       default:
-        return 'normal-pokemon-color'; // Color por defecto si no se encuentra el tipo
+        return 'normal-pokemon-color';
     }
   };
 
-  // Filtrar los Pokémon por los tipos seleccionados
-  const filteredPokemonList = selectedTypes.length
-    ? pokemonList.filter((pokemon) =>
-        pokemon.types.some((typeInfo) =>
+  // Filtrar los Pokémon por los tipos seleccionados y por su nombre
+  const filteredPokemonList = pokemonList.filter((pokemon) => {
+    const matchesType = selectedTypes.length
+      ? pokemon.types.some((typeInfo) =>
           selectedTypes.includes(typeInfo.type.name)
         )
-      )
-    : pokemonList;
+      : true;
+
+    /*Encuentra similitudes entre los valores ingresados en el input y los registrados en la API */
+    const matchesSearch = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
+
+    return matchesType && matchesSearch;
+  });
 
   return (
     <section>
