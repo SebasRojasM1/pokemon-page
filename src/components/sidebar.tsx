@@ -51,36 +51,34 @@ function Sidebar({ onFilterChange }: SidebarProps) {
       </button>
 
       <nav className="menu">
-        <ul>
-          <div>
-            <img
-              src="https://images.wikidexcdn.net/mwuploads/esssbwiki/7/77/latest/20111028181540/TituloUniversoPok%C3%A9mon.png"
-              alt=""
-            />
-          </div>
+        <div className='image-container'>
+          <img
+            src="https://images.wikidexcdn.net/mwuploads/esssbwiki/7/77/latest/20111028181540/TituloUniversoPok%C3%A9mon.png"
+            alt=""
+          />
+        </div>
 
-          <div>
-            <p>Busqueda avanzada:</p>
-            <label htmlFor="">Buscar por nombre pokemon</label>
-            <input type="search" name="" id="" />
-          </div>
+        <div className='search-container'>
+          <p>Busqueda avanzada:</p>
+          <label htmlFor="">Buscar por nombre pokemon</label>
+          <input type="search" name="" id="" />
+        </div>
 
-          <div>
-            <p>Filtrar por tipos:</p>
-            {types.map((type) => (
-              <div key={type.name}>
-                <label>
-                  <input
-                    type="checkbox"
-                    value={type.name}
-                    onChange={() => handleTypeChange(type.name)}
-                  />
-                  {type.name}
-                </label>
-              </div>
-            ))}
-          </div>
-        </ul>
+        <div className='filter-container'>
+          <p>Filtrar por tipos:</p>
+          {types.map((type) => (
+            <div key={type.name} className='select-types'>
+              <label>
+                <input
+                  type="checkbox"
+                  value={type.name}
+                  onChange={() => handleTypeChange(type.name)}
+                />
+                {type.name}
+              </label>
+            </div>
+          ))}
+        </div>
       </nav>
     </div>
   );

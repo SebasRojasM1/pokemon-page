@@ -1,52 +1,111 @@
-/* Estilos básicos del sidebar */
+@use "../styles/mixins" as *;
+@use "../styles/variables" as *;
+
+
 .sidebar {
-    position: fixed;
-    left: -250px; /* Oculto por defecto */
-    top: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    transition: left 0.3s ease; /* Transición suave */
+  position: fixed;
+  left: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: $principal-color-three;
+  transition: left 0.3s ease;
+  color: white;
+  padding: 20px;
+
+  &.open {
+    left: 0;
+  }
+
+  .toggle-button {
+    position: absolute;
+    top: 10px;
+    right: -50px;
+    background-color: $principal-color-three;
     color: white;
-    padding: 20px;
-  
-    &.open {
-      left: 0; /* Mueve el sidebar al lado izquierdo cuando está abierto */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: 0.6s ease;
+
+    &:hover {
+      background-color: $principal-color-two;
+      transition: 0.6s ease;
     }
-  
-    .toggle-button {
-      position: absolute;
-      top: 10px;
-      right: -60px; /* Fuera del sidebar */
-      background-color: #333;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-  
-      &:hover {
-        background-color: #444; /* Cambia el color al hacer hover */
+  }
+
+  .menu {
+
+    .image-container {
+      margin-bottom: 20px;
+
+      img{
+        filter: drop-shadow(0, 0, 10px, rgba(0,0,0,.8));
       }
     }
-  
-    .menu {
-      ul {
-        list-style: none;
-        padding: 0;
-  
-        li {
-          margin: 15px 0;
-  
-          a {
-            color: white;
-            text-decoration: none;
-  
-            &:hover {
-              color: #ffcc00; /* Color de hover */
-            }
-          }
+
+    .search-container {
+      margin-bottom: 20px;
+
+      p {
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+
+      label {
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 18px;
+        cursor: text;
+      }
+
+      input{
+        border: $principal-color-two 2px solid;
+        background-color: aliceblue;
+        border-radius: 10px;
+        color: black;
+
+        &:active{
+          border: $principal-color-two 2px solid;
+        }
+      }
+    }
+
+    .filter-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: auto;
+
+      p {
+        text-align: center;
+        margin: auto;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 18px;
+      }
+
+      .select-types {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        width: 50%;
+        margin-bottom: 10px;
+
+        input {
+          margin-right: 5px;
+          cursor: pointer;
+        }
+
+        label {
+          cursor: pointer;
         }
       }
     }
   }
-  
+}
