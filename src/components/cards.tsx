@@ -15,7 +15,11 @@ interface Pokemon {
   }>;
 }
 
-function CardsPokemon() {
+interface CardsPokemonProps {
+  selectedTypes: string[];
+}
+
+function CardsPokemon({ selectedTypes }: CardsPokemonProps) {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
 
   useEffect(() => {
@@ -36,7 +40,6 @@ function CardsPokemon() {
     fetchPokemonData();
   }, []);
 
-  // Función para obtener el color del tipo de Pokémon.
   const getTypeColor = (type: string) => {
     switch (type) {
       case 'grass':
@@ -80,15 +83,22 @@ function CardsPokemon() {
     }
   };
 
+  // Filtrar los Pokémon por los tipos seleccionados
+  const filteredPokemonList = selectedTypes.length
+    ? pokemonList.filter((pokemon) =>
+        pokemon.types.some((typeInfo) =>
+          selectedTypes.includes(typeInfo.type.name)
+        )
+      )
+    : pokemonList;
+
   return (
     <section>
       <h1>Cards Pokemon</h1>
       <div className="cards-container">
-        {pokemonList.map((pokemon) => (
+        {filteredPokemonList.map((pokemon) => (
           <div className="card" key={pokemon.id}>
-            <div
-              className={`image-pokemon ${getTypeColor(pokemon.types[0].type.name)}`}
-            >
+            <div className={`image-pokemon ${getTypeColor(pokemon.types[0].type.name)}`}>
               <img src={pokemon.sprites.front_default} alt={pokemon.name} />
             </div>
 

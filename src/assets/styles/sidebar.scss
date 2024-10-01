@@ -1,0 +1,52 @@
+/* Estilos básicos del sidebar */
+.sidebar {
+    position: fixed;
+    left: -250px; /* Oculto por defecto */
+    top: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #333;
+    transition: left 0.3s ease; /* Transición suave */
+    color: white;
+    padding: 20px;
+  
+    &.open {
+      left: 0; /* Mueve el sidebar al lado izquierdo cuando está abierto */
+    }
+  
+    .toggle-button {
+      position: absolute;
+      top: 10px;
+      right: -60px; /* Fuera del sidebar */
+      background-color: #333;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+  
+      &:hover {
+        background-color: #444; /* Cambia el color al hacer hover */
+      }
+    }
+  
+    .menu {
+      ul {
+        list-style: none;
+        padding: 0;
+  
+        li {
+          margin: 15px 0;
+  
+          a {
+            color: white;
+            text-decoration: none;
+  
+            &:hover {
+              color: #ffcc00; /* Color de hover */
+            }
+          }
+        }
+      }
+    }
+  }
+  
