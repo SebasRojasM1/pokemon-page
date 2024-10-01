@@ -1,0 +1,24 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+
+function Header() {
+
+    return (
+        <section className='header'>
+            <div className='return-icon'>
+                <FontAwesomeIcon icon={faArrowLeft} />
+            </div>
+
+            <div className='image-container'>
+                <img src="https://images.wikidexcdn.net/mwuploads/esssbwiki/7/77/latest/20111028181540/TituloUniversoPok%C3%A9mon.png" alt="" />
+            </div>
+
+            <div className='mode-change'>
+                <FontAwesomeIcon icon={faMoon} />
+            </div>
+        </section>
+
+    )
+}
+
+export default Header

@@ -35,7 +35,7 @@ function Sidebar({ onFilterChange }: SidebarProps) {
     fetchTypes();
   }, []);
 
-  
+
   const handleTypeChange = (type: string) => {
     const updatedSelectedTypes = selectedTypes.includes(type)
       ? selectedTypes.filter((t) => t !== type)
