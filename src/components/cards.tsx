@@ -101,7 +101,7 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
 
   return (
     <section>
-      <h1>Cards Pokemon</h1>
+      <h1>Pokemon Cards</h1>
       <div className="cards-container">
         {filteredPokemonList.map((pokemon) => (
           <div className="card" key={pokemon.id}>

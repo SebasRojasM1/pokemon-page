@@ -11,9 +11,10 @@ function App() {
     setSelectedTypes(types);
     setSearchTerm(term);
   };
-  
+
   return (
     <>
+    
       <Sidebar onFilterChange={handleFilterChange} />
       <CardsPokemon selectedTypes={selectedTypes} searchTerm={searchTerm}/>
     </>

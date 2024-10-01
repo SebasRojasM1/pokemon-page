@@ -76,6 +76,7 @@
         right: 0;
         padding: 10px;
         transition: 0.3s ease;
+        border-radius: 0 0 8px 8px;
 
         &:hover {
           background-color: $principal-color-three;

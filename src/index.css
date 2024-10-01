@@ -17,3 +17,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1{
+  font-size: 35px;
+  color: #843802;
+  text-transform: uppercase;
+  font-weight: bold ;
+}
