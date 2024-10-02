@@ -1,0 +1,11 @@
+.pokemon-radar-chart {
+    width: 295px;
+    margin: auto;
+    position: relative;
+    left: -10px;
+    top: -35px;
+  
+    canvas {
+      max-width: 100%;
+    }
+  }

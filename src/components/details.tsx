@@ -1,6 +1,9 @@
 import "../assets/styles/details.scss"
+import PokemonRadarChart from "./pokemonGraph";
 
 function Details() {
+    const pikachuStats = [85, 55, 40, 50, 50, 90]; // HP, Attack, Defense, Special Attack, Special Defense, Speed
+
     return (
         <section className="details">
             <div className="pokemon-name">
@@ -59,7 +62,8 @@ function Details() {
 
             <div className="secundary-info">
                 <div className="stats">
-
+                    <h4>Pokemon stats</h4>
+                    <PokemonRadarChart stats={pikachuStats} />
                 </div>
 
                 <div className="cards">

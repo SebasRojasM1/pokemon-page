@@ -142,7 +142,23 @@
 
 
     .stats{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      width: 350px;
+      height: 270px;
+      margin-right: 20px;
 
+      h4{
+        color: $principal-color-three;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
     }
 
     .cards{
@@ -155,6 +171,7 @@
       border: $principal-color-two 4px solid;
       width: 400px;
       height: 270px;
+      margin-left: 20px;
 
       img{
         width: 150px;
