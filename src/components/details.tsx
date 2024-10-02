@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import "../assets/styles/details.scss";
 import PokemonRadarChart from "./pokemonGraph";
+import Modal from './Modal'; // Importamos el Modal
 
 interface PokemonDetails {
     id: number;
@@ -42,6 +43,8 @@ function Details({ pokemonId }: DetailsProps) {
     const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails | null>(null);
     const [cards, setCards] = useState<PokemonCard[]>([]);
     const [evolutionSpecies, setEvolutionSpecies] = useState<string | null>(null);
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     // Función para obtener el Pokémon y su cadena evolutiva
     const fetchEvolutionChain = async (speciesUrl: string) => {
@@ -52,7 +55,6 @@ function Details({ pokemonId }: DetailsProps) {
             const evolutionResponse = await axios.get(evolutionChainUrl);
             const chain = evolutionResponse.data.chain;
 
-            // Función para obtener la última evolución de la cadena
             let mostAdvancedEvolution = chain.species.name;
             let evolvesTo = chain.evolves_to;
 
@@ -62,15 +64,12 @@ function Details({ pokemonId }: DetailsProps) {
             }
 
             setEvolutionSpecies(mostAdvancedEvolution);
-
-            // Llamar a la API de Pokémon TCG para buscar cartas
             fetchPokemonCards(mostAdvancedEvolution);
         } catch (error) {
             console.error('Error fetching evolution chain:', error);
         }
     };
 
-    // Función para obtener las cartas de la Pokémon TCG API
     const fetchPokemonCards = async (pokemonName: string) => {
         try {
             const response = await axios.get(`https://api.pokemontcg.io/v2/cards?q=name:${pokemonName}`);
@@ -101,6 +100,16 @@ function Details({ pokemonId }: DetailsProps) {
     }
 
     const pokemonStats = pokemonDetails.stats.map((stat) => stat.base_stat);
+
+    const openModal = (image: string) => {
+        setSelectedImage(image);
+        setIsModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setIsModalOpen(false);
+        setSelectedImage(null);
+    };
 
     return (
         <section className="details">
@@ -166,20 +175,20 @@ function Details({ pokemonId }: DetailsProps) {
                     {cards.length > 0 ? (
                         <div className="cards">
                             {cards.map((card) => (
-                                <div key={card.name} className="card-item">
+                                <div key={card.name} className="card-item" onClick={() => openModal(card.images.large)}>
                                     <h4>{card.name}</h4>
                                     <img src={card.images.large} alt={card.name} />
                                     <p><span>Type:</span> {card.types}</p>
                                 </div>
                             ))}
                         </div>
-                        ) : (
+                    ) : (
                         <p>No cards available for {evolutionSpecies}</p>
-                        )}
+                    )}
                 </div>
             </div>
 
-            
+            <Modal isOpen={isModalOpen} onClose={closeModal} imageSrc={selectedImage || ''} altText="Selected Pokemon Card" />
         </section>
     );
 }
