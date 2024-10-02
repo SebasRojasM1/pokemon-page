@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './App.css'
 import CardsPokemon from './components/cards'
 import Sidebar from './components/sidebar'
+import Header from './components/header';
 
 function App() {
   const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
@@ -14,9 +15,14 @@ function App() {
 
   return (
     <>
-    
-      <Sidebar onFilterChange={handleFilterChange} />
-      <CardsPokemon selectedTypes={selectedTypes} searchTerm={searchTerm}/>
+      <header>
+        <Header></Header>
+      </header>
+      
+      <main>
+        <Sidebar onFilterChange={handleFilterChange} />
+        <CardsPokemon selectedTypes={selectedTypes} searchTerm={searchTerm}/>
+      </main>
     </>
   )
 }

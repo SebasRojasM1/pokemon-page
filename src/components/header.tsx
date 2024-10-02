@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import "../assets/styles/header.scss"
 
 function Header() {
 
     return (
         <section className='header'>
             <div className='return-icon'>
-                <FontAwesomeIcon icon={faArrowLeft} />
+                <FontAwesomeIcon icon={faArrowLeft}/>
             </div>
 
             <div className='image-container'>
@@ -14,7 +15,7 @@ function Header() {
             </div>
 
             <div className='mode-change'>
-                <FontAwesomeIcon icon={faMoon} />
+                <FontAwesomeIcon icon={faMoon}/>
             </div>
         </section>
 
