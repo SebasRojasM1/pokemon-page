@@ -149,8 +149,8 @@
       border-radius: $card-border-radius;
       box-shadow: $card-box-shadow;
       border: $principal-color-two 4px solid;
-      width: 350px;
-      height: 270px;
+      width: 380px;
+      height: 330px;
       margin-right: 20px;
 
       h4{
@@ -161,7 +161,7 @@
       }
     }
 
-    .cards{
+    .cards-container{
       display: flex;
       align-items: center;
       justify-content: space-evenly;
@@ -169,15 +169,64 @@
       border-radius: $card-border-radius;
       box-shadow: $card-box-shadow;
       border: $principal-color-two 4px solid;
-      width: 400px;
-      height: 270px;
+      color: black;
+      width: 800px;
+      height: 330px;
       margin-left: 20px;
+      overflow: auto; /* Muestra la barra deslizadora cuando sea necesario */
 
-      img{
-        width: 150px;
-        margin: 25px 0;
-        border-radius: $card-border-radius;
+      h3{
+        color: $principal-color-three;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
       }
+
+      .cards{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .card-item{
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          text-align: center;
+          margin: 0 30px 40px 10px;
+
+          h4{
+            color: $principal-color-three;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+          }
+          
+          p{
+            display: flex;
+            align-items: center;
+            flex-direction: column ;
+            
+            span{
+              font-weight: bold;
+            }
+          }
+            
+          img{
+            width: 130px;
+            margin: 5px 0;
+            border-radius: $card-border-radius;
+            cursor: pointer;
+            transition: 0.3s;
+            &:hover{
+              transform: scale(1.06);
+              
+            }
+          }
+        }
+        
+      }
+      
     }
   }
 }

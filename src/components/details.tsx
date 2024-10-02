@@ -24,9 +24,14 @@ interface PokemonDetails {
     stats: Array<{
         base_stat: number;
     }>;
-    species: {
-        name: string;
+}
+
+interface PokemonCard {
+    name: string;
+    images: {
+        large: string;
     };
+    types: string[];
 }
 
 interface DetailsProps {
@@ -35,12 +40,54 @@ interface DetailsProps {
 
 function Details({ pokemonId }: DetailsProps) {
     const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails | null>(null);
+    const [cards, setCards] = useState<PokemonCard[]>([]);
+    const [evolutionSpecies, setEvolutionSpecies] = useState<string | null>(null);
+
+    // Función para obtener el Pokémon y su cadena evolutiva
+    const fetchEvolutionChain = async (speciesUrl: string) => {
+        try {
+            const speciesResponse = await axios.get(speciesUrl);
+            const evolutionChainUrl = speciesResponse.data.evolution_chain.url;
+
+            const evolutionResponse = await axios.get(evolutionChainUrl);
+            const chain = evolutionResponse.data.chain;
+
+            // Función para obtener la última evolución de la cadena
+            let mostAdvancedEvolution = chain.species.name;
+            let evolvesTo = chain.evolves_to;
+
+            while (evolvesTo.length > 0) {
+                mostAdvancedEvolution = evolvesTo[0].species.name;
+                evolvesTo = evolvesTo[0].evolves_to;
+            }
+
+            setEvolutionSpecies(mostAdvancedEvolution);
+
+            // Llamar a la API de Pokémon TCG para buscar cartas
+            fetchPokemonCards(mostAdvancedEvolution);
+        } catch (error) {
+            console.error('Error fetching evolution chain:', error);
+        }
+    };
+
+    // Función para obtener las cartas de la Pokémon TCG API
+    const fetchPokemonCards = async (pokemonName: string) => {
+        try {
+            const response = await axios.get(`https://api.pokemontcg.io/v2/cards?q=name:${pokemonName}`);
+            setCards(response.data.data);
+        } catch (error) {
+            console.error('Error fetching Pokémon cards:', error);
+        }
+    };
 
     useEffect(() => {
         const fetchPokemonDetails = async () => {
             try {
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
                 setPokemonDetails(response.data);
+
+                const speciesUrl = response.data.species.url;
+                fetchEvolutionChain(speciesUrl);
             } catch (error) {
                 console.error('Error fetching Pokémon details:', error);
             }
@@ -93,7 +140,7 @@ function Details({ pokemonId }: DetailsProps) {
                     <div className="pokemon-special">
                         <div className="specie-pokemon">
                             <h3>Species</h3>
-                            <p>{pokemonDetails.species.name}</p>
+                            <p>Dragon</p>
                         </div>
 
                         <div className="specie-pokemon">
@@ -113,7 +160,26 @@ function Details({ pokemonId }: DetailsProps) {
                     <h4>Pokemon stats</h4>
                     <PokemonRadarChart stats={pokemonStats} />
                 </div>
+
+                <div className="cards-container">
+                    <h3>Pokemon Cards</h3>
+                    {cards.length > 0 ? (
+                        <div className="cards">
+                            {cards.map((card) => (
+                                <div key={card.name} className="card-item">
+                                    <h4>{card.name}</h4>
+                                    <img src={card.images.large} alt={card.name} />
+                                    <p><span>Type:</span> {card.types}</p>
+                                </div>
+                            ))}
+                        </div>
+                        ) : (
+                        <p>No cards available for {evolutionSpecies}</p>
+                        )}
+                </div>
             </div>
+
+            
         </section>
     );
 }
