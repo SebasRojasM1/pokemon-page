@@ -1,30 +1,15 @@
-import { useState } from 'react';
-import './App.css'
-import CardsPokemon from './components/cards'
-import Sidebar from './components/sidebar'
-import Header from './components/header';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ListPokemon from './assets/pages/ListPokemon';
 
 function App() {
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>('');
-
-  const handleFilterChange = (types: string[], term: string) => {
-    setSelectedTypes(types);
-    setSearchTerm(term);
-  };
-
   return (
-    <>
-      <header>
-        <Header></Header>
-      </header>
-      
-      <main>
-        <Sidebar onFilterChange={handleFilterChange} />
-        <CardsPokemon selectedTypes={selectedTypes} searchTerm={searchTerm}/>
-      </main>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/list" element={<ListPokemon />} /> {/* Ruta para la página de ListPokemon */}
+        {/* Otras rutas que puedas tener */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
