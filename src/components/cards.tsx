@@ -110,7 +110,7 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
             </div>
 
             <div className="info-pokemon">
-              <p>{pokemon.name}</p>
+              <p id='pokemon-name'>{pokemon.name}</p>
 
               {pokemon.types.map((typeInfo) => (
                 <div

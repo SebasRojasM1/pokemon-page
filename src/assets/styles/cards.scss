@@ -7,7 +7,7 @@
   
     .card {
       width: 270px;
-      height: 320px;
+      height: 370px;
       margin: 20px;
       background-color: white;
       border-radius: 5px;
@@ -45,6 +45,12 @@
         text-align: center;
         text-transform: uppercase;
         font-weight: bold;
+        margin: 17px 0 10px;
+
+        #pokemon-name{
+          font-size: 18px;
+          margin-bottom: 8px;
+        }
       }
 
       .type-pokemon{
@@ -53,6 +59,7 @@
         justify-content: space-evenly;
         flex-wrap: wrap;
         border-radius: 8px;
+        margin-top: 5px;
 
 
         p{
