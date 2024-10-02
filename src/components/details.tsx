@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import "../assets/styles/details.scss";
 import PokemonRadarChart from "./pokemonGraph";
-import Modal from './Modal'; // Importamos el Modal
+import Modal from './modal';
 
 interface PokemonDetails {
     id: number;
