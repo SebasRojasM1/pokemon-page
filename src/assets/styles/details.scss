@@ -1,3 +1,166 @@
 @use "./variables" as *;
 @use "./mixins" as *;
 
+.details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+  margin-top: 50px;
+  width: 100%;
+
+  .pokemon-name{
+    display: flex;
+    justify-content: flex-start;
+    
+    p{
+      text-align: start;
+      color: $principal-color-three;
+      font-size: 40px;
+      font-weight: bold;
+    }
+  }
+
+  .principal-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    width: 100%;
+    margin: 30px 0 45px;
+
+    .pokemon-image-container{
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      height: 300px;
+      padding: 20px;
+      margin-right: 20px;
+
+      .pokemon-image{
+        background-color: gold;
+        border-radius: 50%;
+        
+  
+        img{
+          width: 250px;
+        }
+      }
+    }
+    
+    .pokemon-profile-container{
+      display: flex;
+      justify-content: space-between;
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      width: 550px;
+      height: 300px;
+      margin-left: 20px;
+
+
+      .pokemon-profile{
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        margin-left: 15px;
+        
+        .height-pokemon, .weight-pokemon{
+          h3{
+            font-weight: bold;
+            font-size: 17px;
+            color: $principal-color-three;
+            margin: 10px 0;
+          }
+  
+          p{
+            font-size: 26px;
+            color: black;
+          }
+        }
+  
+  
+        .type-pokemon{
+          h3{
+            font-weight: bold;
+            font-size: 17px;
+            color: $principal-color-three;
+            margin: 10px 0;
+          }
+  
+          p{
+            font-size: 17px;
+            color: black;
+          }
+  
+          .types{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+  
+            p{
+              background-color: red;
+              color: white;
+              font-weight: bold;
+              text-align: center;
+              margin: 0 6px;
+              padding: 2px 12px;
+              border-radius: 9px;
+            }
+          } 
+        }
+      }
+
+
+      .pokemon-special{
+        margin-right: 15px;
+
+        .specie-pokemon, .abilities-pokemon{
+          h3{
+            font-weight: bold;
+            font-size: 17px;
+            color: $principal-color-three;
+            margin: 10px 0;
+          }
+  
+          p, ul, li{
+            font-size: 26px;
+            color: black;
+          }
+        }
+      }
+    }
+  }
+
+  .secundary-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+    .stats{
+
+    }
+
+    .cards{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      width: 400px;
+      height: 270px;
+
+      img{
+        width: 150px;
+        margin: 25px 0;
+        border-radius: $card-border-radius;
+      }
+    }
+  }
+}
