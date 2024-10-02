@@ -1,19 +1,70 @@
-import "../assets/styles/details.scss"
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import "../assets/styles/details.scss";
 import PokemonRadarChart from "./pokemonGraph";
 
-function Details() {
-    const pikachuStats = [85, 55, 40, 50, 50, 90]; // HP, Attack, Defense, Special Attack, Special Defense, Speed
+interface PokemonDetails {
+    id: number;
+    name: string;
+    sprites: {
+        front_default: string;
+    };
+    height: number;
+    weight: number;
+    types: Array<{
+        type: {
+            name: string;
+        };
+    }>;
+    abilities: Array<{
+        ability: {
+            name: string;
+        };
+    }>;
+    stats: Array<{
+        base_stat: number;
+    }>;
+    species: {
+        name: string;
+    };
+}
+
+interface DetailsProps {
+    pokemonId: string | undefined;
+}
+
+function Details({ pokemonId }: DetailsProps) {
+    const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails | null>(null);
+
+    useEffect(() => {
+        const fetchPokemonDetails = async () => {
+            try {
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
+                setPokemonDetails(response.data);
+            } catch (error) {
+                console.error('Error fetching Pokémon details:', error);
+            }
+        };
+
+        fetchPokemonDetails();
+    }, [pokemonId]);
+
+    if (!pokemonDetails) {
+        return <div>Loading...</div>;
+    }
+
+    const pokemonStats = pokemonDetails.stats.map((stat) => stat.base_stat);
 
     return (
         <section className="details">
             <div className="pokemon-name">
-                <p>Pikachu #123</p>
+                <p>{pokemonDetails.name} #{pokemonDetails.id}</p>
             </div>
 
             <div className="principal-info">
                 <div className="pokemon-image-container">
                     <div className="pokemon-image">
-                        <img src="https://pngimg.com/uploads/pokemon/small/pokemon_PNG9.png" alt="" />
+                        <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
                     </div>
                 </div>
 
@@ -21,39 +72,36 @@ function Details() {
                     <div className="pokemon-profile">
                         <div className="type-pokemon">
                             <h3>Type</h3>
-
                             <div className="types">
-                                <p>Rock</p>
-                                <p>Electric</p>
+                                {pokemonDetails.types.map((typeInfo) => (
+                                    <p key={typeInfo.type.name}>{typeInfo.type.name}</p>
+                                ))}
                             </div>
                         </div>
 
                         <div className="height-pokemon">
                             <h3>Height</h3>
-                            <p>2.2 m</p>
+                            <p>{pokemonDetails.height} m</p>
                         </div>
 
                         <div className="weight-pokemon">
                             <h3>Weight</h3>
-                            <p>210.0 kg</p>
+                            <p>{pokemonDetails.weight} kg</p>
                         </div>
                     </div>
 
                     <div className="pokemon-special">
                         <div className="specie-pokemon">
                             <h3>Species</h3>
-                            <p>Dragon</p>
+                            <p>{pokemonDetails.species.name}</p>
                         </div>
 
-                        <div className="abilities-pokemon">
+                        <div className="specie-pokemon">
                             <h3>Abilities</h3>
                             <ul>
-                                <li>
-                                    Inner Focus
-                                </li>
-                                <li>
-                                    Multiscale (Hidden)
-                                </li>
+                                {pokemonDetails.abilities.map((abilityInfo) => (
+                                    <li key={abilityInfo.ability.name}>{abilityInfo.ability.name}</li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -63,16 +111,11 @@ function Details() {
             <div className="secundary-info">
                 <div className="stats">
                     <h4>Pokemon stats</h4>
-                    <PokemonRadarChart stats={pikachuStats} />
-                </div>
-
-                <div className="cards">
-                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SWSH4/SWSH4_EN_43.png" alt="" />
-                    <img src="https://www.pokemon.com/static-assets/content-assets/cms2/img/cards/web/SWSH4/SWSH4_EN_43.png" alt="" />
+                    <PokemonRadarChart stats={pokemonStats} />
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
 export default Details;
