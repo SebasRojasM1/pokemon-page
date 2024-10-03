@@ -14,17 +14,21 @@ interface SidebarProps {
 
 function Sidebar({ onFilterChange }: SidebarProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [types, setTypes] = useState<PokemonType[]>([]);
-  const [selectedTypes, setSelectedTypes] = useState<string[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string>(''); // Nuevo estado para el nombre de búsqueda
+  const [types, setTypes] = useState<PokemonType[]>([]); // Estado para almacenar los tipos de Pokémon
+  const [selectedTypes, setSelectedTypes] = useState<string[]>([]); // Estado para almacenar los tipos de Pokémon seleccionados
+  const [searchTerm, setSearchTerm] = useState<string>(''); // Estado para almacenar la cadena de busqueda
 
+
+  /*Ejecuta la apertura del sidebar */
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
+
   useEffect(() => {
     const fetchTypes = async () => {
       try {
+        /*Obtiene los tipos de pokemon existentes por medio de una peticion*/
         const response = await axios.get('https://pokeapi.co/api/v2/type');
         setTypes(response.data.results);
       } catch (error) {
@@ -36,19 +40,23 @@ function Sidebar({ onFilterChange }: SidebarProps) {
   }, []);
 
 
+  /*Maneja los cambios cuando se selecciona el tipo de pokemon */
   const handleTypeChange = (type: string) => {
     const updatedSelectedTypes = selectedTypes.includes(type)
-      ? selectedTypes.filter((t) => t !== type)
-      : [...selectedTypes, type];
+      ? selectedTypes.filter((t) => t !== type) // Si el tipo ya está seleccionado, lo elimina
+      : [...selectedTypes, type]; //Si no existe, lo agrega
 
     setSelectedTypes(updatedSelectedTypes);
-    onFilterChange(updatedSelectedTypes, searchTerm); // Pass the selected types and search term
+    onFilterChange(updatedSelectedTypes, searchTerm); //Llama a la funcion callback con los valores de tipos y nombre filtrados
   };
 
+
+  /*Maneja y captura los valores de los inputs */
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value);
-    onFilterChange(selectedTypes, event.target.value); // Pass the updated search term and selected types
+    onFilterChange(selectedTypes, event.target.value); 
   };
+
 
   return (
     <div className={`sidebar ${isOpen ? 'open' : ''}`}>
@@ -72,7 +80,7 @@ function Sidebar({ onFilterChange }: SidebarProps) {
             name="search"
             id="search"
             value={searchTerm}
-            onChange={handleSearchChange} // Añadimos el evento para actualizar el valor de búsqueda
+            onChange={handleSearchChange}
           />
         </div>
 
