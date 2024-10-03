@@ -31,6 +31,12 @@
         width: 70%;
         border-radius: 50%;
         margin: auto;
+
+        @each $type, $color in $pokemon-colors {
+          &.#{$type} {
+            background-color: $color;
+          }
+        }
   
         img {
           width: 600px;
@@ -47,7 +53,7 @@
         font-weight: bold;
         margin: 17px 0 10px;
 
-        #pokemon-name{
+        .pokemon-name{
           font-size: 18px;
           margin-bottom: 8px;
         }
@@ -61,6 +67,11 @@
         border-radius: 8px;
         margin-top: 5px;
 
+        @each $type, $color in $pokemon-colors {
+          &.#{$type} {
+            background-color: $color;
+          }
+        }
 
         p{
             font-size: 13px;
@@ -98,60 +109,4 @@
         }
       }
     }
-  }
-  
-
-  .grass-pokemon-color {
-    background-color: $grass-pokemon-color;
-  }
-  .fire-pokemon-color {
-    background-color: $fire-pokemon-color;
-  }
-  .water-pokemon-color {
-    background-color: $water-pokemon-color;
-  }
-  .electric-pokemon-color {
-    background-color: $electric-pokemon-color;
-  }
-  .ice-pokemon-color {
-    background-color: $ice-pokemon-color;
-  }
-  .fighting-pokemon-color {
-    background-color: $fighting-pokemon-color;
-  }
-  .poison-pokemon-color {
-    background-color: $poison-pokemon-color;
-  }
-  .ground-pokemon-color {
-    background-color: $ground-pokemon-color;
-  }
-  .flying-pokemon-color {
-    background-color: $flying-pokemon-color;
-  }
-  .phychic-pokemon-color {
-    background-color: $phychic-pokemon-color;
-  }
-  .bug-pokemon-color {
-    background-color: $bug-pokemon-color;
-  }
-  .rock-pokemon-color {
-    background-color: $rock-pokemon-color;
-  }
-  .ghost-pokemon-color {
-    background-color: $ghost-pokemon-color;
-  }
-  .dark-pokemon-color {
-    background-color: $dark-pokemon-color;
-  }
-  .dragon-pokemon-color {
-    background-color: $dragon-pokemon-color;
-  }
-  .steel-pokemon-color {
-    background-color: $steel-pokemon-color;
-  }
-  .fairy-pokemon-color {
-    background-color: $fairy-pokemon-color;
-  }
-  .normal-pokemon-color {
-    background-color: $normal-pokemon-color;
   }

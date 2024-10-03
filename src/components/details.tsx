@@ -46,7 +46,6 @@ function Details({ pokemonId }: DetailsProps) {
     const [selectedImage, setSelectedImage] = useState<string | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    // Función para obtener el Pokémon y su cadena evolutiva
     const fetchEvolutionChain = async (speciesUrl: string) => {
         try {
             const speciesResponse = await axios.get(speciesUrl);
@@ -100,6 +99,7 @@ function Details({ pokemonId }: DetailsProps) {
     }
 
     const pokemonStats = pokemonDetails.stats.map((stat) => stat.base_stat);
+    const primaryType = pokemonDetails.types[0].type.name;
 
     const openModal = (image: string) => {
         setSelectedImage(image);
@@ -119,7 +119,7 @@ function Details({ pokemonId }: DetailsProps) {
 
             <div className="principal-info">
                 <div className="pokemon-image-container">
-                    <div className="pokemon-image">
+                    <div className={`pokemon-image ${primaryType}`}>
                         <img src={pokemonDetails.sprites.front_default} alt={pokemonDetails.name} />
                     </div>
                 </div>
@@ -130,7 +130,7 @@ function Details({ pokemonId }: DetailsProps) {
                             <h3>Type</h3>
                             <div className="types">
                                 {pokemonDetails.types.map((typeInfo) => (
-                                    <p key={typeInfo.type.name}>{typeInfo.type.name}</p>
+                                    <p key={typeInfo.type.name} className={typeInfo.type.name}>{typeInfo.type.name}</p>
                                 ))}
                             </div>
                         </div>

@@ -24,3 +24,26 @@ $dark-pokemon-color:#6F5947;
 $dragon-pokemon-color: #7337FE;
 $steel-pokemon-color: #B9B9D2;
 $fairy-pokemon-color: #EDB6BD;
+
+
+
+$pokemon-colors: (
+  grass: $grass-pokemon-color,
+  fire: $fire-pokemon-color,
+  water: $water-pokemon-color,
+  electric: $electric-pokemon-color,
+  ice: $ice-pokemon-color,
+  fighting: $fighting-pokemon-color,
+  poison: $poison-pokemon-color,
+  ground: $ground-pokemon-color,
+  flying: $flying-pokemon-color,
+  psychic: $phychic-pokemon-color,
+  bug: $bug-pokemon-color,
+  rock: $rock-pokemon-color,
+  ghost: $ghost-pokemon-color,
+  dark: $dark-pokemon-color,
+  dragon: $dragon-pokemon-color,
+  steel: $steel-pokemon-color,
+  fairy: $fairy-pokemon-color,
+  normal: $normal-pokemon-color,
+);

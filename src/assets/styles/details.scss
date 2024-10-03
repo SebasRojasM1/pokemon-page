@@ -13,12 +13,17 @@
   .pokemon-name{
     display: flex;
     justify-content: flex-start;
-    
+    background-color: $principal-color-three;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: $card-box-shadow;
+
     p{
       text-align: start;
-      color: $principal-color-three;
+      color: $principal-color-four;
       font-size: 40px;
       font-weight: bold;
+      text-transform: uppercase;
     }
   }
 
@@ -40,10 +45,15 @@
       margin-right: 20px;
 
       .pokemon-image{
-        background-color: gold;
         border-radius: 50%;
         
-  
+        // Bucle para aplicar colores de fondo automáticamente
+        @each $type, $color in $pokemon-colors {
+          &.#{$type} {
+            background-color: $color;
+          }
+        }
+        
         img{
           width: 250px;
         }
@@ -79,6 +89,13 @@
           p{
             font-size: 26px;
             color: black;
+            font-weight: 600;
+          }
+        }
+
+        .weight-pokemon{
+          p{
+            text-transform: capitalize;
           }
         }
   
@@ -102,13 +119,21 @@
             justify-content: space-evenly;
   
             p{
-              background-color: red;
               color: white;
               font-weight: bold;
               text-align: center;
               margin: 0 6px;
               padding: 2px 12px;
               border-radius: 9px;
+              text-align: left;
+              text-transform: uppercase;
+
+              // Bucle para aplicar colores de fondo automáticamente
+              @each $type, $color in $pokemon-colors {
+                &.#{$type} {
+                  background-color: $color;
+                }
+              }
             }
           } 
         }
@@ -129,6 +154,8 @@
           p, ul, li{
             font-size: 26px;
             color: black;
+            font-weight: 600;
+            text-transform: capitalize;
           }
         }
       }

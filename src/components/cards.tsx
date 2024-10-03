@@ -40,50 +40,7 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
 
     fetchPokemonData();
   }, []);
-
-  /*Funcion donde se setea los colores de los pokemones según su tipo, en base a la variable creada en SASS.*/
-  const getTypeColor = (type: string) => {
-    switch (type) {
-      case 'grass':
-        return 'grass-pokemon-color';
-      case 'fire':
-        return 'fire-pokemon-color';
-      case 'water':
-        return 'water-pokemon-color';
-      case 'electric':
-        return 'electric-pokemon-color';
-      case 'ice':
-        return 'ice-pokemon-color';
-      case 'fighting':
-        return 'fighting-pokemon-color';
-      case 'poison':
-        return 'poison-pokemon-color';
-      case 'ground':
-        return 'ground-pokemon-color';
-      case 'flying':
-        return 'flying-pokemon-color';
-      case 'psychic':
-        return 'phychic-pokemon-color';
-      case 'bug':
-        return 'bug-pokemon-color';
-      case 'rock':
-        return 'rock-pokemon-color';
-      case 'ghost':
-        return 'ghost-pokemon-color';
-      case 'dark':
-        return 'dark-pokemon-color';
-      case 'dragon':
-        return 'dragon-pokemon-color';
-      case 'steel':
-        return 'steel-pokemon-color';
-      case 'fairy':
-        return 'fairy-pokemon-color';
-      case 'normal':
-        return 'normal-pokemon-color';
-      default:
-        return 'normal-pokemon-color';
-    }
-  };
+  
 
   // Filtrar los Pokémon por los tipos seleccionados y por su nombre
   const filteredPokemonList = pokemonList.filter((pokemon) => {
@@ -93,7 +50,6 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
         )
       : true;
 
-    /*Encuentra similitudes entre los valores ingresados en el input y los registrados en la API */
     const matchesSearch = pokemon.name.toLowerCase().includes(searchTerm.toLowerCase());
 
     return matchesType && matchesSearch;
@@ -103,32 +59,36 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
     <section>
       <h1>Pokemon Cards</h1>
       <div className="cards-container">
-        {filteredPokemonList.map((pokemon) => (
-          <div className="card" key={pokemon.id}>
-            <div className={`image-pokemon ${getTypeColor(pokemon.types[0].type.name)}`}>
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            </div>
+        {filteredPokemonList.map((pokemon) => {
+          const primaryType = pokemon.types[0].type.name;
 
-            <div className="info-pokemon">
-              <p id='pokemon-name'>{pokemon.name}</p>
+          return (
+            <div className={`card ${primaryType}`} key={pokemon.id}> {}
+              <div className={`image-pokemon ${primaryType}`}>
+                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              </div>
 
-              {pokemon.types.map((typeInfo) => (
-                <div
-                  key={typeInfo.type.name}
-                  className={`type-pokemon ${getTypeColor(typeInfo.type.name)}`}
-                >
-                  <p>{typeInfo.type.name}</p>
-                </div>
-              ))}
-            </div>
+              <div className="info-pokemon">
+                <p id='pokemon-name'>{pokemon.name}</p>
 
-            <div className="more-details">
-              <a href={`/details/${pokemon.id}`} target="self">
-                Ver detalles
-              </a>
+                {pokemon.types.map((typeInfo) => (
+                  <div
+                    key={typeInfo.type.name}
+                    className={`type-pokemon ${typeInfo.type.name}`} 
+                  >
+                    <p>{typeInfo.type.name}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="more-details">
+                <a href={`/details/${pokemon.id}`} target="self">
+                  Ver detalles
+                </a>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
