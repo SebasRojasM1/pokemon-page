@@ -40,7 +40,6 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
 
     fetchPokemonData();
   }, []);
-  
 
   // Filtrar los Pokémon por los tipos seleccionados y por su nombre
   const filteredPokemonList = pokemonList.filter((pokemon) => {
@@ -56,14 +55,14 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
   });
 
   return (
-    <section>
+    <section className="cards-section">
       <h1>Pokemon Cards</h1>
       <div className="cards-container">
         {filteredPokemonList.map((pokemon) => {
           const primaryType = pokemon.types[0].type.name;
 
           return (
-            <div className={`card ${primaryType}`} key={pokemon.id}> {}
+            <div className={`card ${primaryType}`} key={pokemon.id}>
               <div className={`image-pokemon ${primaryType}`}>
                 <img src={pokemon.sprites.front_default} alt={pokemon.name} />
               </div>
@@ -74,7 +73,7 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
                 {pokemon.types.map((typeInfo) => (
                   <div
                     key={typeInfo.type.name}
-                    className={`type-pokemon ${typeInfo.type.name}`} 
+                    className={`type-pokemon ${typeInfo.type.name}`}
                   >
                     <p>{typeInfo.type.name}</p>
                   </div>
