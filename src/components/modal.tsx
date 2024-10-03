@@ -1,4 +1,3 @@
-import React from 'react';
 import '../assets/styles/modal.scss';
 
 interface ModalProps {
@@ -8,7 +7,7 @@ interface ModalProps {
   altText: string;
 }
 
-const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, altText }) => {
+function Modal({ isOpen, onClose, imageSrc, altText }: ModalProps) {
   if (!isOpen) return null;
 
   return (
@@ -21,6 +20,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, imageSrc, altText }) => 
       </div>
     </div>
   );
-};
+}
 
 export default Modal;
