@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import '../../App.css'
-import CardsPokemon from '../../components/cards';
-import Sidebar from '../../components/sidebar';
-import Header from '../../components/header';
+import '../App.css'
+import CardsPokemon from '../components/cards';
+import Sidebar from '../components/sidebar';
+import Header from '../components/header';
 
 function ListPokemon() {
     const [selectedTypes, setSelectedTypes] = useState<string[]>([]);

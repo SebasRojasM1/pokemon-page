@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
-import '../../App.css'
-import Details from '../../components/details';
-import Header from '../../components/header';
+import '../App.css'
+import Details from '../components/details';
+import Header from '../components/header';
 
 function DetailsPokemon() {
   const { id } = useParams<{ id: string }>();
