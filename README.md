@@ -16,7 +16,7 @@ This project is an alternative way to visualize information about Pokemon. It fo
 ## APIs used
 
 - **PokeAPI**: Api used to obtain information about each existing pokemon, from its name, images and its specific details.
-- **PokeAPI**: Api used to visualize the cards in their last evolution of each existing pokemon.
+- **PokemonTCG**: Api used to visualize the cards in their last evolution of each existing pokemon.
 
 ### Skills
 - TypeScript
