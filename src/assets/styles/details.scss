@@ -1,0 +1,494 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.details{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ECD1A5;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 50px 0;
+
+  .pokemon-name{
+    display: flex;
+    justify-content: flex-start;
+    background-color: $principal-color-three;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: $card-box-shadow;
+
+    p{
+      text-align: start;
+      color: $principal-color-four;
+      font-size: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  .principal-info{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+    width: 100%;
+    margin: 30px 0 45px;
+
+    .pokemon-image-container{
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      height: 300px;
+      padding: 20px;
+      margin-right: 20px;
+
+      .pokemon-image{
+        border-radius: 50%;
+        
+        // Bucle para aplicar colores de fondo automáticamente
+        @each $type, $color in $pokemon-colors {
+          &.#{$type} {
+            background-color: $color;
+          }
+        }
+        
+        img{
+          width: 250px;
+          filter: drop-shadow(0 0 6px rgba(0, 0, 0, .8));
+        }
+      }
+    }
+    
+    .pokemon-profile-container{
+      display: flex;
+      justify-content: left;
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      width: 800px;      
+      height: 300px;
+      margin-left: 20px;
+
+
+      .pokemon-profile{
+        display: flex;
+        flex-direction: column;
+        text-align: start;
+        margin-left: 15px;
+        width: 30%;
+        
+        .height-pokemon, .weight-pokemon{
+          h3{
+            font-weight: bold;
+            font-size: 17px;
+            color: $principal-color-three;
+            margin: 10px 0;
+          }
+  
+          p{
+            font-size: 26px;
+            color: black;
+            font-weight: 600;
+          }
+        }
+
+        .weight-pokemon{
+          p{
+            text-transform: capitalize;
+          }
+        }
+  
+  
+        .type-pokemon{
+          h3{
+            font-weight: bold;
+            font-size: 17px;
+            color: $principal-color-three;
+            margin: 10px 0;
+          }
+  
+          p{
+            font-size: 17px;
+            color: black;
+          }
+  
+          .types{
+            display: flex;
+            align-items: center;
+            justify-content: initial;
+  
+            p{
+              color: white;
+              font-weight: bold;
+              text-align: center;
+              margin: 0 6px;
+              padding: 2px 12px;
+              border-radius: 9px;
+              text-align: left;
+              text-transform: uppercase;
+
+              // Bucle para aplicar colores de fondo automáticamente
+              @each $type, $color in $pokemon-colors {
+                &.#{$type} {
+                  background-color: $color;
+                }
+              }
+            }
+          } 
+        }
+      }
+
+
+      .pokemon-special{
+        margin-right: 15px;
+        width: 70%;
+
+        .specie-pokemon, .abilities-pokemon{
+          h3{
+            font-weight: bold;
+            font-size: 17px;
+            color: $principal-color-three;
+            margin: 8px 0;
+          }
+  
+          p, ul, li{
+            font-size: 18px;
+            color: black;
+            font-weight: 600;
+            text-transform: capitalize;
+          }
+        }
+
+        .specie-pokemon{
+          .pokemon-sprites{
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            img{
+              width: 130px;
+              transition: 0.5s;
+              filter: drop-shadow(0 0 6px rgba(0, 0, 0, .8));
+
+              &:hover{
+                cursor: pointer;
+                transform: scale(1.12);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .secundary-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+
+    .stats{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      width: 380px;
+      height: 330px;
+      margin-right: 20px;
+
+      h4{
+        color: $principal-color-three;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+    }
+
+    .cards-container{
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      flex-direction: column;
+      background-color: white;
+      border-radius: $card-border-radius;
+      box-shadow: $card-box-shadow;
+      border: $principal-color-two 4px solid;
+      color: black;
+      width: 800px;
+      height: 330px;
+      margin-left: 20px;
+      overflow: auto; /* Muestra la barra deslizadora cuando sea necesario */
+
+      h3{
+        color: $principal-color-three;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+      }
+
+      .cards{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .card-item{
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          text-align: center;
+          margin: 0 30px 40px 10px;
+
+          h4{
+            color: $principal-color-three;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 10px;
+          }
+          
+          p{
+            display: flex;
+            align-items: center;
+            flex-direction: column ;
+            
+            span{
+              font-weight: bold;
+            }
+          }
+            
+          img{
+            width: 130px;
+            margin: 5px 0;
+            border-radius: $card-border-radius;
+            cursor: pointer;
+            filter: drop-shadow(0 0 4px rgba(0, 0, 0, .8));
+
+            transition: 0.3s;
+
+            &:hover{
+              transform: scale(1.06);
+              
+            }
+          }
+        }
+        
+      }
+      
+    }
+  }
+}
+
+// Modo oscuro
+body.dark-mode .details {
+  background-color: $background-dark;
+
+  .pokemon-name {
+    p {
+      color: white;
+    }
+  }
+
+  .principal-info {
+    .pokemon-image-container {
+      background-color: $card-background-dark;
+      box-shadow: $shadow-dark;
+      border-color: $principal-color-three;
+    }
+
+    .pokemon-profile-container {
+      background-color: $card-background-dark;
+      box-shadow: $shadow-dark;
+      
+
+      .pokemon-profile{
+        .type-pokemon{
+          .types{
+            p{
+              color: white;
+            }
+          }
+        }
+
+        .height-pokemon, .weight-pokemon{
+          p{
+            color: white;
+          }
+        }
+      }
+    }
+
+    .pokemon-special{
+      .abilities-pokemon{
+        ul{
+          li{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  .secundary-info {
+    .stats,
+    .cards-container {
+      background-color: $card-background-dark;
+      box-shadow: $shadow-dark;
+      color: white;
+    }
+  }
+}
+/*  Responsive  Mobile  */
+@media (max-width: 767px) {
+  .principal-info{
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px ;
+    width: 100%;
+
+    .pokemon-image-container{
+      margin-bottom: 30px;
+    }
+
+    .pokemon-profile-container{
+      width: 500px !important;      
+      height: 330px !important;
+      margin: auto;
+
+      .pokemon-profile{
+        .type-pokemon{
+          .types{
+            display: flex;
+            justify-content: start;
+            flex-direction: column;
+
+            p{
+              margin: 2px 0 !important;
+              text-align: start !important;
+            }
+          }
+        }
+      }
+
+
+      .pokemon-special{
+        .specie-pokemon{
+          width: 55% !important;
+
+          .pokemon-sprites{
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) ;
+            grid-template-rows: repeat(3, 1fr);
+            width: 240px !important;
+            gap: 15px;
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .secundary-info{
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px ;
+    width: 100%;
+
+    .stats{
+      margin-bottom: 30px;
+    }
+
+    .cards-container{
+      width: 500px !important;
+      height: 130px;
+      margin: auto !important;
+    }
+  }
+}
+
+
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  
+  .principal-info{
+    justify-content: center;
+    align-items: center;
+    margin: 0 20px ;
+    width: 100%;
+    align-items: center;
+
+    .pokemon-image-container{
+      margin-bottom: 30px;
+    }
+
+    .pokemon-profile-container{
+      width: 500px !important;      
+      height: 300px;
+      margin: auto;
+
+      .pokemon-profile{
+        .type-pokemon{
+          .types{
+            display: flex;
+            justify-content: start;
+
+            p{
+              margin: 2px 0 !important;
+              text-align: start !important;
+            }
+          }
+        }
+      }
+
+
+      .pokemon-special{
+        align-items: center;
+        justify-content: center;
+
+        .specie-pokemon{
+          width: 55% !important;
+
+          .pokemon-sprites{
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) ;
+            grid-template-rows: repeat(3, 1fr);
+            width: 250px !important;
+            gap: 15px;
+
+            img{
+              width: 2px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+
+  .secundary-info{
+    flex-direction: column;
+    align-items: center;
+    margin: 0 20px ;
+    width: 100%;
+
+    .stats{
+      margin-bottom: 30px;
+    }
+
+    .cards-container{
+      width: 600px !important;
+      height: 130px;
+      margin: auto !important;
+
+    }
+  }
+}

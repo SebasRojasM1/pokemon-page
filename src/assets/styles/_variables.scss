@@ -1,0 +1,60 @@
+$card-border-radius: 12px;
+$card-box-shadow: 9px 9px 15px -8px black;
+
+/*Paleta de colores definida*/
+$principal-color-one: #843802;
+$principal-color-two: #CE8E47;
+$principal-color-three: #B46C22;
+$principal-color-four: #ECD1A5;
+
+
+/*Modo oscuro*/
+$background-dark: #0f0f0f;
+$text-color-dark: #bebebe;
+$text-color-dark-secundary: #5a5a5a;
+$card-background-dark: #272727;
+$shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.4);
+
+
+/*Colores de pokemon segun el tipo*/
+$normal-pokemon-color: #A4A574;
+$fire-pokemon-color: #EE7E2E;
+$water-pokemon-color: #668DF1;
+$grass-pokemon-color: #73C653;
+$electric-pokemon-color: #F3CC26;
+$ice-pokemon-color: #95D6D9;
+$fighting-pokemon-color: #C32F25;
+$poison-pokemon-color: #973D95;
+$ground-pokemon-color: #E1BE65;
+$flying-pokemon-color: #A68EF0;
+$phychic-pokemon-color: #FF598A;
+$bug-pokemon-color: #AAB81F;
+$rock-pokemon-color: #B7A035;
+$ghost-pokemon-color: #75589C;
+$dark-pokemon-color:#6F5947;
+$dragon-pokemon-color: #7337FE;
+$steel-pokemon-color: #B9B9D2;
+$fairy-pokemon-color: #EDB6BD;
+
+
+/*Funcion para aplicar colores dinamicamente*/
+$pokemon-colors: (
+  grass: $grass-pokemon-color,
+  fire: $fire-pokemon-color,
+  water: $water-pokemon-color,
+  electric: $electric-pokemon-color,
+  ice: $ice-pokemon-color,
+  fighting: $fighting-pokemon-color,
+  poison: $poison-pokemon-color,
+  ground: $ground-pokemon-color,
+  flying: $flying-pokemon-color,
+  psychic: $phychic-pokemon-color,
+  bug: $bug-pokemon-color,
+  rock: $rock-pokemon-color,
+  ghost: $ghost-pokemon-color,
+  dark: $dark-pokemon-color,
+  dragon: $dragon-pokemon-color,
+  steel: $steel-pokemon-color,
+  fairy: $fairy-pokemon-color,
+  normal: $normal-pokemon-color,
+);
