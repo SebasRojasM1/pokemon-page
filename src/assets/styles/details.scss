@@ -286,12 +286,11 @@
 
 // Modo oscuro
 body.dark-mode .details {
-  .pokemon-name {
-    background-color: $background-dark;
-    box-shadow: $shadow-dark;
+  background-color: $background-dark;
 
+  .pokemon-name {
     p {
-      color: $text-color-dark;
+      color: white;
     }
   }
 
@@ -299,16 +298,38 @@ body.dark-mode .details {
     .pokemon-image-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
-      border-color: $text-color-dark;
+      border-color: $principal-color-three;
     }
 
     .pokemon-profile-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
+      
 
-      .pokemon-profile,
-      .pokemon-special {
-        color: $text-color-dark;
+      .pokemon-profile{
+        .type-pokemon{
+          .types{
+            p{
+              color: white;
+            }
+          }
+        }
+
+        .height-pokemon, .weight-pokemon{
+          p{
+            color: white;
+          }
+        }
+      }
+    }
+
+    .pokemon-special{
+      .abilities-pokemon{
+        ul{
+          li{
+            color: white;
+          }
+        }
       }
     }
   }
@@ -318,7 +339,7 @@ body.dark-mode .details {
     .cards-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
-      color: $text-color-dark;
+      color: white;
     }
   }
 }
