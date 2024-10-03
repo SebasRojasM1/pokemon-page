@@ -63,4 +63,4 @@ To run the project, open your console and execute the following command to initi
 ### Project deployed
 You can also see the project by accessing the following link
 
-- [Pokemon page](https://www.postman.com/maintenance-operator-95682430/workspace/nestjs/collection/33425968-10cbaeaa-8210-4922-bcf7-ec602c9fe098?action=share&creator=33425968)
+- [Pokemon page](https://pokemon-page-two.vercel.app/)
