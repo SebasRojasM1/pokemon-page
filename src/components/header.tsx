@@ -7,7 +7,7 @@ function Header() {
     return (
         <section className='header'>
             <div className='return-icon'>
-                <FontAwesomeIcon icon={faHouse} />
+                <a href="/list"><FontAwesomeIcon icon={faHouse} /></a>
             </div>
 
             <div className='image-container'>
