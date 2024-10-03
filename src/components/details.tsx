@@ -9,6 +9,9 @@ interface PokemonDetails {
     name: string;
     sprites: {
         front_default: string;
+        back_default: string;
+        front_shiny: string;
+        back_shiny: string;
     };
     height: number;
     weight: number;
@@ -146,7 +149,7 @@ function Details({ pokemonId }: DetailsProps) {
                     </div>
 
                     <div className="pokemon-special">
-                        <div className="specie-pokemon">
+                        <div className="abilities-pokemon">
                             <h3>Abilities</h3>
                             <ul>
                                 {pokemonDetails.abilities.map((abilityInfo) => (
@@ -157,7 +160,20 @@ function Details({ pokemonId }: DetailsProps) {
 
                         <div className="specie-pokemon">
                             <h3>Species</h3>
-                            <img src="" alt="" />
+                            <div className="pokemon-sprites">
+                                {pokemonDetails.sprites.front_default && (
+                                    <img src={pokemonDetails.sprites.front_default} alt={`${pokemonDetails.name} front`} />
+                                )}
+                                {pokemonDetails.sprites.back_default && (
+                                    <img src={pokemonDetails.sprites.back_default} alt={`${pokemonDetails.name} back`} />
+                                )}
+                                {pokemonDetails.sprites.front_shiny && (
+                                    <img src={pokemonDetails.sprites.front_shiny} alt={`${pokemonDetails.name} front shiny`} />
+                                )}
+                                {pokemonDetails.sprites.back_shiny && (
+                                    <img src={pokemonDetails.sprites.back_shiny} alt={`${pokemonDetails.name} back shiny`} />
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
