@@ -116,6 +116,29 @@ section {
       }
     }
   }
+
+  .pagination{
+    margin: 20px 0;
+
+    button{
+      background-color: $principal-color-three;
+      padding: 5px 8px;
+      border-radius: 10px;
+      font-weight: bold;
+      margin: 0 12px;
+      transition: 0.6s;
+      font-size: 17px;
+
+      &:hover{
+        background-color: $principal-color-two;
+        transition: 0.3s ease;
+      }
+    }
+
+    span{
+      font-weight: bold;
+    }
+  }
 }  
 
 
