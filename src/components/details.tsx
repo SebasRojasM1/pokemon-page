@@ -51,15 +51,23 @@ function Details({ pokemonId }: DetailsProps) {
 
     const fetchEvolutionChain = async (speciesUrl: string) => {
         try {
+            /*Obtiene las especies de la PokeAPI, y obtiene la cadena de evolucion*/
             const speciesResponse = await axios.get(speciesUrl);
             const evolutionChainUrl = speciesResponse.data.evolution_chain.url;
 
+            /*Hace una peticion para obtener los datos de la evolucion */
             const evolutionResponse = await axios.get(evolutionChainUrl);
+            /*Obtiene la expecie base de la cadena */
             const chain = evolutionResponse.data.chain;
 
+            /*Variable para almacenar el nombre de la evolucion mas avanzada */
             let mostAdvancedEvolution = chain.species.name;
             let evolvesTo = chain.evolves_to;
 
+
+            /*Recorre toda la cadena de evolucion del pokemon. 
+                Actualiza el nombre a la evolucion mas avanzada 
+                Pasa al siguiente pokemon*/
             while (evolvesTo.length > 0) {
                 mostAdvancedEvolution = evolvesTo[0].species.name;
                 evolvesTo = evolvesTo[0].evolves_to;
@@ -72,6 +80,8 @@ function Details({ pokemonId }: DetailsProps) {
         }
     };
 
+
+    /*Obtiene las cartas de la API PokemonCTG según su nombre */
     const fetchPokemonCards = async (pokemonName: string) => {
         try {
             const response = await axios.get(`https://api.pokemontcg.io/v2/cards?q=name:${pokemonName}`);
@@ -82,11 +92,14 @@ function Details({ pokemonId }: DetailsProps) {
     };
 
     useEffect(() => {
+        /*Obtiene los pokemones según el ID, para extraer su informacion especifica */
         const fetchPokemonDetails = async () => {
             try {
+                /*Extraer los detalles del pokemon */
                 const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}`);
                 setPokemonDetails(response.data);
 
+                /*Obtiene la cadena de evolución para obtener la especie base*/
                 const speciesUrl = response.data.species.url;
                 fetchEvolutionChain(speciesUrl);
             } catch (error) {
@@ -96,13 +109,21 @@ function Details({ pokemonId }: DetailsProps) {
         fetchPokemonDetails();
     }, [pokemonId]);
 
+
+    /* En caso de que no cargue la información */
     if (!pokemonDetails) {
         return <div>Loading...</div>;
     }
 
+
+    /*Array de tipo number, de las estadisticas de cada Pokemon*/
     const pokemonStats = pokemonDetails.stats.map((stat) => stat.base_stat);
+
+    /*Encuentra el primer tipo de cada Pokemon, para luego aplicarlo en background */
     const primaryType = pokemonDetails.types[0].type.name;
 
+
+    /*Funciones para abrir y cerrar el Modal de cada card */
     const openModal = (image: string) => {
         setSelectedImage(image);
         setIsModalOpen(true);
