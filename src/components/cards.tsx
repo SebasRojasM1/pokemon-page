@@ -64,7 +64,7 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
   /*Verifica si hay valores seleccionados por su tipo */
   const filteredPokemonList = pokemonList.filter((pokemon) => {
     const matchesType = selectedTypes.length
-      ? pokemon.types.some((typeInfo) =>
+      ? pokemon.types.some((typeInfo) => //Verifica si alguno de los tipos seleccionados está en la lista de tipos de la API
           selectedTypes.includes(typeInfo.type.name)
         )
       : true;
