@@ -90,7 +90,6 @@ function Details({ pokemonId }: DetailsProps) {
                 console.error('Error fetching Pokémon details:', error);
             }
         };
-
         fetchPokemonDetails();
     }, [pokemonId]);
 
@@ -148,17 +147,17 @@ function Details({ pokemonId }: DetailsProps) {
 
                     <div className="pokemon-special">
                         <div className="specie-pokemon">
-                            <h3>Species</h3>
-                            <p>Dragon</p>
-                        </div>
-
-                        <div className="specie-pokemon">
                             <h3>Abilities</h3>
                             <ul>
                                 {pokemonDetails.abilities.map((abilityInfo) => (
                                     <li key={abilityInfo.ability.name}>{abilityInfo.ability.name}</li>
                                 ))}
                             </ul>
+                        </div>
+
+                        <div className="specie-pokemon">
+                            <h3>Species</h3>
+                            <img src="" alt="" />
                         </div>
                     </div>
                 </div>
