@@ -1,7 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon, faHouse, faSun } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faHouse, faSun, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import "../assets/styles/header.scss"
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function Header() {
     const [isDarkMode, setIsDarkMode] = useState(false);
@@ -11,10 +12,25 @@ function Header() {
         document.body.classList.toggle('dark-mode', !isDarkMode); // Alterna la clase en el body
     };
 
+
+    /*Hace que sea dinamico el icono de navegación del header según la pagina actual */
+    const location = useLocation();  // Hook para obtener la ruta actual
+    const navigate = useNavigate();  // Hook para manejar la navegación
+
+    const getIconForRoute = () => {
+        if (location.pathname === '/list') {
+            return <FontAwesomeIcon icon={faHouse} onClick={() => navigate('/')}/>;
+        } else if (location.pathname.startsWith('/details')) {
+            return <FontAwesomeIcon icon={faArrowLeft} onClick={() => navigate('/list')} />;
+        }
+        return null;
+    };
+
+
     return (
         <section className='header'>
             <div className='return-icon'>
-                <a href="/list"><FontAwesomeIcon icon={faHouse} /></a>
+                {getIconForRoute()}
             </div>
 
             <div className='image-container'>
