@@ -131,11 +131,9 @@ function CardsPokemon({ selectedTypes, searchTerm }: CardsPokemonProps) {
                 ))}
               </div>
 
-              <div className="more-details">
-                <a href={`/details/${pokemon.id}`} target="self">
+                <a href={`/details/${pokemon.id}`} target="self" className="more-details">
                   See details
                 </a>
-              </div>
             </div>
           );
         })}

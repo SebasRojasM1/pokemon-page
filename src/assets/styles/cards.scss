@@ -103,18 +103,17 @@
         padding: 10px;
         transition: 0.3s ease;
         border-radius: 0 0 8px 8px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
 
         &:hover {
           background-color: $principal-color-three;
           transition: 0.3s ease;
         }
 
-        a {
-          color: white;
-          font-weight: bold;
-          text-decoration: none;
-          text-transform: uppercase;
-        }
+        
       }
     }
   }
