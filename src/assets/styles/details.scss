@@ -290,6 +290,7 @@ body.dark-mode .details {
   background-color: $background-dark;
 
   .pokemon-name {
+    background-color: $card-background-dark;
     p {
       color: white;
     }
@@ -299,17 +300,23 @@ body.dark-mode .details {
     .pokemon-image-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
-      border-color: $principal-color-three;
+      border-color: $border-color-dark;
     }
 
     .pokemon-profile-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
-      
+      border-color: $border-color-dark;
+
 
       .pokemon-profile{
+        h3{
+          color: $text-color-dark;
+        }
+
         .type-pokemon{
           .types{
+            
             p{
               color: white;
             }
@@ -325,11 +332,22 @@ body.dark-mode .details {
     }
 
     .pokemon-special{
+      
       .abilities-pokemon{
+        h3{
+          color: $text-color-dark;
+        }
+
         ul{
           li{
             color: white;
           }
+        }
+      }
+
+      .specie-pokemon{
+        h3{
+          color: $text-color-dark;
         }
       }
     }
@@ -341,6 +359,19 @@ body.dark-mode .details {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
       color: white;
+      border-color: $border-color-dark;
+
+      h3, h4{
+        color: $text-color-dark;
+      }
+
+      .cards{
+        .card-item{
+          h4{
+            color: $text-color-dark
+          }
+        }
+      }
     }
   }
 }

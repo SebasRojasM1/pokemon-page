@@ -9,12 +9,14 @@ $principal-color-four: #ECD1A5;
 
 
 /*Modo oscuro*/
-$background-dark: #0f0f0f;
+$background-dark: #2b2b2b;
 $text-color-dark: #bebebe;
 $text-color-dark-secundary: #5a5a5a;
-$card-background-dark: #272727;
 $shadow-dark: 0 4px 6px rgba(0, 0, 0, 0.4);
-
+$card-background-dark: #444;
+$card-background-dark-hover: #333;
+$border-color-dark: #8d8d8d;
+$border-color-dark-hover: #656565;
 
 /*Colores de pokemon segun el tipo*/
 $normal-pokemon-color: #A4A574;

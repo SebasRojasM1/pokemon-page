@@ -44,3 +44,13 @@
         }
     }
 }
+
+body.dark-mode .header {
+    background-color: $card-background-dark;
+
+    .return-icon, .mode-change{
+        &:hover{
+            color: $text-color-dark;
+        }
+    }
+}

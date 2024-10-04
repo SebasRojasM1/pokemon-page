@@ -113,3 +113,20 @@
     }
   }
 }
+
+
+body.dark-mode .sidebar {
+  background-color: $card-background-dark;
+
+  .toggle-button{
+    background-color: #383838;
+  }
+
+  .menu{
+    .search-container{
+      input{
+        border: goldenrod 2px solid;
+      }
+    }
+  }
+}

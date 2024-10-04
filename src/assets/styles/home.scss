@@ -71,11 +71,25 @@ body.dark-mode .section-home {
         h1{
             color: white;
         }
+
+        .gif-container{
+            background-color: $card-background-dark;
+        }
     }
 
     .info{
         p{
             color: white;
         }
+
+        a{
+            background-color: #8d8d8d;
+            transition: 0.3s;
+
+            &:hover{
+                background-color: #6d6d6d;
+        }
     }
   }
+}
+
