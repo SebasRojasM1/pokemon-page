@@ -290,6 +290,7 @@ body.dark-mode .details {
   background-color: $background-dark;
 
   .pokemon-name {
+    background-color: $card-background-dark;
     p {
       color: white;
     }
@@ -299,17 +300,23 @@ body.dark-mode .details {
     .pokemon-image-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
-      border-color: $principal-color-three;
+      border-color: $border-color-dark;
     }
 
     .pokemon-profile-container {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
-      
+      border-color: $border-color-dark;
+
 
       .pokemon-profile{
+        h3{
+          color: $text-color-dark;
+        }
+
         .type-pokemon{
           .types{
+            
             p{
               color: white;
             }
@@ -325,11 +332,22 @@ body.dark-mode .details {
     }
 
     .pokemon-special{
+      
       .abilities-pokemon{
+        h3{
+          color: $text-color-dark;
+        }
+
         ul{
           li{
             color: white;
           }
+        }
+      }
+
+      .specie-pokemon{
+        h3{
+          color: $text-color-dark;
         }
       }
     }
@@ -341,6 +359,19 @@ body.dark-mode .details {
       background-color: $card-background-dark;
       box-shadow: $shadow-dark;
       color: white;
+      border-color: $border-color-dark;
+
+      h3, h4{
+        color: $text-color-dark;
+      }
+
+      .cards{
+        .card-item{
+          h4{
+            color: $text-color-dark
+          }
+        }
+      }
     }
   }
 }
@@ -355,14 +386,20 @@ body.dark-mode .details {
 
     .pokemon-image-container{
       margin-bottom: 30px;
+      flex-direction: column;
     }
 
     .pokemon-profile-container{
-      width: 500px !important;      
-      height: 330px !important;
+      width: 370px !important;      
+      height: 350px !important;
+      flex-direction: column;
       margin: auto;
 
       .pokemon-profile{
+        display: flex !important;
+        flex-direction: row !important;
+        margin-left: 5px !important;
+
         .type-pokemon{
           .types{
             display: flex;
@@ -375,10 +412,19 @@ body.dark-mode .details {
             }
           }
         }
+
+        .height-pokemon{
+          margin: 0 50px ;
+        }
       }
 
 
       .pokemon-special{
+        display: flex !important;
+        flex-direction: row;
+        margin-left: 5px !important;
+
+
         .specie-pokemon{
           width: 55% !important;
 
@@ -403,13 +449,19 @@ body.dark-mode .details {
     width: 100%;
 
     .stats{
-      margin-bottom: 30px;
+      margin: 30px auto;
+      width: 380px !important;      
     }
 
     .cards-container{
-      width: 500px !important;
+      width: 380px !important;      
       height: 130px;
       margin: auto !important;
+
+      .cards{
+        margin: auto !important;
+        padding: auto;
+      }
     }
   }
 }

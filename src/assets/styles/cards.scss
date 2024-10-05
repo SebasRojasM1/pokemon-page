@@ -103,18 +103,17 @@
         padding: 10px;
         transition: 0.3s ease;
         border-radius: 0 0 8px 8px;
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+        text-transform: uppercase;
 
         &:hover {
           background-color: $principal-color-three;
           transition: 0.3s ease;
         }
 
-        a {
-          color: white;
-          font-weight: bold;
-          text-decoration: none;
-          text-transform: uppercase;
-        }
+        
       }
     }
   }
@@ -157,12 +156,42 @@ body.dark-mode {
 
   .cards-container {
     .card {
-      background-color: #444;
+      background-color: $card-background-dark;
       color: #f0f0f0;
+      border: $border-color-dark 4px solid;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: $card-background-dark-hover;
+        border: $border-color-dark-hover 4px solid;
+        transition: 0.3s;
+      }
+
+      .more-details{
+        background-color: $border-color-dark;
+        transition: 0.3s;
+        
+        &:hover{
+          background-color: #6d6d6d
+        }
+      }
 
       .info-pokemon,
       .type-pokemon p {
         color: #fff;
+      }
+    }
+  }
+
+  .pagination{
+    button{
+      background-color: #8d8d8d;
+      transition: 0.3s;
+
+      &:hover{
+        background-color: #6d6d6d;
+        transition: 0.3s;
+        cursor: pointer;
       }
     }
   }
