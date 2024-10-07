@@ -393,7 +393,7 @@ body.dark-mode .details {
     }
 
     .pokemon-profile-container{
-      width: 395px !important;      
+      width: 380px !important;      
       height: 350px !important;
       flex-direction: column;
       justify-content: center;
@@ -406,7 +406,6 @@ body.dark-mode .details {
         margin-left: 0px !important;
         justify-content: center;
         flex-direction: column;
-        align-items: center;
 
         .type-pokemon{
           .types{
@@ -423,6 +422,16 @@ body.dark-mode .details {
 
         .height-pokemon{
           margin: 0 50px ;
+          p{
+            font-size: 23px !important;
+          }
+        }
+
+        .weight-pokemon{
+          margin-right: 15px;
+          p{
+            font-size: 23px !important;
+          }
         }
       }
 
@@ -432,16 +441,18 @@ body.dark-mode .details {
         flex-direction: row;
         height: 120px;
 
-
+        .abilities-pokemon{
+          margin-right: 20px;
+        }
         .specie-pokemon{
           width: 55% !important;
           margin-left: 5px;
 
           .pokemon-sprites{
             display: grid !important;
-            grid-template-columns: repeat(3, 1fr) ;
-            grid-template-rows: repeat(3, 1fr);
-            width: 240px !important;
+            grid-template-columns: repeat(2, 1fr) ;
+            grid-template-rows: repeat(2, 1fr);
+            width: 180px !important;
             gap: 15px;
           }
         }
