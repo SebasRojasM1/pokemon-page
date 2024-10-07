@@ -244,7 +244,7 @@
           align-items: center;
           flex-direction: column;
           text-align: center;
-          margin: 0 30px 40px 10px;
+          margin: 0 20px 40px 20px;
 
           h4{
             color: $principal-color-three;
@@ -381,24 +381,32 @@ body.dark-mode .details {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    margin: 0 20px ;
+    margin: 30px 0 0 !important;
     width: 100%;
 
     .pokemon-image-container{
-      margin-bottom: 30px;
+      margin: 0 0 30px 0 !important;
       flex-direction: column;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
     }
 
     .pokemon-profile-container{
-      width: 370px !important;      
+      width: 430px !important;      
       height: 350px !important;
       flex-direction: column;
-      margin: auto;
+      justify-content: center;
+      align-items: center;
+      margin-left: 0 !important;
 
       .pokemon-profile{
         display: flex !important;
         flex-direction: row !important;
-        margin-left: 5px !important;
+        margin-left: 0px !important;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
 
         .type-pokemon{
           .types{
@@ -422,11 +430,12 @@ body.dark-mode .details {
       .pokemon-special{
         display: flex !important;
         flex-direction: row;
-        margin-left: 5px !important;
+        height: 120px;
 
 
         .specie-pokemon{
           width: 55% !important;
+          margin-left: 20px;
 
           .pokemon-sprites{
             display: grid !important;
@@ -445,11 +454,10 @@ body.dark-mode .details {
   .secundary-info{
     flex-direction: column;
     align-items: center;
-    margin: 0 20px ;
     width: 100%;
 
     .stats{
-      margin: 30px auto;
+      margin: 30px 0 !important;
       width: 380px !important;      
     }
 
