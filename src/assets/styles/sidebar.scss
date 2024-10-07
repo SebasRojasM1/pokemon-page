@@ -39,17 +39,14 @@
   }
 
   .menu {
-
     .image-container {
-      margin-bottom: 20px;
-
       img{
         filter: drop-shadow(0, 0, 10px, rgba(0,0,0,.8));
       }
     }
 
     .search-container {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
 
       p {
         text-align: center;
@@ -100,6 +97,7 @@
         text-transform: capitalize;
         width: 50%;
         margin-bottom: 10px;
+        font-size: 14px;
 
         input {
           margin-right: 5px;
